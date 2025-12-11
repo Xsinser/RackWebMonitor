@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Blazor.Monitor/Blazor.Monitor.csproj" />
+  <Project Path="Grpc.Core/Grpc.Core.csproj" Id="2e7d8999-757d-4542-862c-d2e40a14428d" />
+  <Project Path="Grpc.Monitor/Grpc.Monitor.csproj" Id="b3fa0d79-c94e-4bc2-8814-2ed765ce14e1" />
+  <Project Path="MonitorPlayPolygon/MonitorPlayPolygon.csproj" Id="72d2b29d-c9e2-4103-8a8b-912b9c8119db" />
+</Solution>
