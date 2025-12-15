@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Threading;
 
-
 var tempRaspberyPiCommand = new CommandHelper("vcgencmd measure_temp");
 var tempRaspberyPiCommandResult1 = tempRaspberyPiCommand.ExecuteCommand(); //temp=46.6'C <-- нужен парсер. пример строки результата
 var tempRaspberyPiCommandResult2 = tempRaspberyPiCommand.ExecuteCommand(); //temp=46.6'C
@@ -11,7 +10,13 @@ var tempRaspberyPiCommandResult2 = tempRaspberyPiCommand.ExecuteCommand(); //tem
 Console.WriteLine(tempRaspberyPiCommandResult1);
 Console.WriteLine(tempRaspberyPiCommandResult2);
 
-class DockerContainerInfo
+public class Temp
+{
+    public string Literal { get; set; }
+    public decimal Value { get; set; }
+}
+
+internal class DockerContainerInfo
 {
     public string Command { get; set; }
     public string CreatedAt { get; set; }
@@ -43,7 +48,7 @@ public class DockerContainerResource
     public string PIDs { get; set; }
 }
 
-class DockerHelper
+internal class DockerHelper
 {
     private CommandHelper _commandHelperInfo;
     private CommandHelper _commandHelperResource;
@@ -80,7 +85,29 @@ class DockerHelper
     }
 }
 
-class CommandHelper : IDisposable
+internal class TempHelper
+{
+    private CommandHelper _commandHelper;
+
+    public TempHelper()
+    {
+        _commandHelper = new CommandHelper("vcgencmd measure_temp");
+    }
+
+    public Temp GetTemp()
+    {
+        var str = _commandHelper.ExecuteCommand()?.Replace("temp=", "").Split('\'');
+        return new() { Value = decimal.Parse(str.First()), Literal = str.Last() };
+    }
+
+    public async Task<Temp> GetTempAsync()
+    {
+        var str = (await _commandHelper.ExecuteCommandAsync())?.Replace("temp=", "").Split('\'');
+        return new() { Value = decimal.Parse(str.First()), Literal = str.Last() };
+    }
+}
+
+internal class CommandHelper : IDisposable
 {
     private SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
     private bool _disposed = false;
