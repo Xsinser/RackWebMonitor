@@ -1,9 +1,4 @@
-﻿using Grpc.Core.Monitor;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Grpc.Core.Models
+﻿namespace Grpc.Core.Models
 {
     public class TemperatureModel
     {

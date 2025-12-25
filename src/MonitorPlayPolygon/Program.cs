@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.Json;
-using System.Threading;
 
 var tempRaspberyPiCommand = new CommandHelper("vcgencmd measure_temp");
 var tempRaspberyPiCommandResult1 = tempRaspberyPiCommand.ExecuteCommand(); //temp=46.6'C <-- нужен парсер. пример строки результата

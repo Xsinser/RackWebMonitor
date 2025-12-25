@@ -1,6 +1,5 @@
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using Grpc.Core.Models;
 using Grpc.Core.Monitor;
 using Grpc.Monitor.Manager;
 
