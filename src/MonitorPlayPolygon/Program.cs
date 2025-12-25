@@ -10,7 +10,7 @@ var tempRaspberyPiCommandResult2 = tempRaspberyPiCommand.ExecuteCommand(); //tem
 Console.WriteLine(tempRaspberyPiCommandResult1);
 Console.WriteLine(tempRaspberyPiCommandResult2);
 
-public class Temp
+public class Temperature
 {
     public string Literal { get; set; }
     public decimal Value { get; set; }
@@ -94,13 +94,13 @@ internal class TempHelper
         _commandHelper = new CommandHelper("vcgencmd measure_temp");
     }
 
-    public Temp GetTemp()
+    public Temperature GetTemp()
     {
         var str = _commandHelper.ExecuteCommand()?.Replace("temp=", "").Split('\'');
         return new() { Value = decimal.Parse(str.First()), Literal = str.Last() };
     }
 
-    public async Task<Temp> GetTempAsync()
+    public async Task<Temperature> GetTempAsync()
     {
         var str = (await _commandHelper.ExecuteCommandAsync())?.Replace("temp=", "").Split('\'');
         return new() { Value = decimal.Parse(str.First()), Literal = str.Last() };

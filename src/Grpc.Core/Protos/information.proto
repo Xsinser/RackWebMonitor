@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "Grpc.Core.Monitor";
+
+package information;
+
+import "google/protobuf/empty.proto";
+
+service Information {
+  rpc GetTemperature (google.protobuf.Empty) returns (TemperatureResponse);
+}
+
+message TemperatureResponse {
+	string sign =1;
+	float value=2;
+}
