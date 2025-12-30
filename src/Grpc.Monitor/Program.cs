@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddGrpc();
 builder.Services.AddTransient<TemperatureManager>();
+builder.Services.AddTransient<DockerManager>();
 
 var app = builder.Build();
 

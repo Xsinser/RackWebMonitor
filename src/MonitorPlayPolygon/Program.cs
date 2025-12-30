@@ -25,7 +25,7 @@ internal class DockerContainerInfo
     public string Mounts { get; set; }
     public string Names { get; set; }
     public string Networks { get; set; }
-    public object Platform { get; set; }
+    public string Platform { get; set; }
     public string Ports { get; set; }
     public string RunningFor { get; set; }
     public string Size { get; set; }

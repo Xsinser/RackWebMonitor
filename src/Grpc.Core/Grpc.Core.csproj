@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Grpc.AspNetCore" Version="2.57.0" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.76.0" />
 		<PackageReference Include="Google.Protobuf" Version="3.33.2" />
 		<PackageReference Include="Grpc.Net.Client" Version="2.76.0" />
 		<PackageReference Include="Grpc.Tools" Version="2.76.0">
@@ -17,8 +17,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Protos/*.proto"
-				  GrpcServices="Both"
-				  Access="Public" />
+		<Protobuf Include="Protos/*.proto" GrpcServices="Both" Access="Public" />
 	</ItemGroup>
 </Project>
